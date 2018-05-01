@@ -3,8 +3,8 @@ const importTask = require("./task.js");
 const Task = new importTask();
 
 /*
-    If you want to create a task type....... Task.createTask()
-    If you want to create a list of task objects type......Task.Factory()
+If you want to create a task type....... Task.createTask()
+If you want to create a list of task objects type......Task.Factory()
 */
 
 
@@ -14,29 +14,44 @@ function totals(list){
     let totalValue = 0;
     let totalTime = 0;
 
-    for(let p = 0, p < list, p++){
+    for(let p = 0; p < list.length; p++){
         totalValue = list[p].value + totalValue;
         totalTime = list[p].time + totalTime;
-
     }
 
     return {
-
+        totalTime,
+        totalValue
     }
 }
 
 //works the the same as above, but stops short at the kth number in the list
 function partialTotals(list,k){
 
+    let totalValue = 0;
+    let totalTime = 0;
 
+    if(k < list.length){
 
+        for(let p = 0; p < k; p++){
+            totalValue = list[p].value + totalValue;
+            totalTime = list[p].time + totalTime;
+        }
+
+        return{
+            totalTime,
+            totalValue
+        }
+    }
 }
 
 //returns a sorted version of the task list from least to greatest according to its time variable
 function sortTime(list){
 
     //provide the criteria to sort the tasks.  They are objects remember.
-    return list.sort(/*fill this*/);
+    return list.sort(function(a, b){
+        a.time - b.time;
+    });
 
 }
 
@@ -72,9 +87,9 @@ function mainTest(n){
     let minTime = sortTime(taskList);
     console.log(partialTotals(minTime, n/4));
 
-    let minValue = sortValue(taskList);
-    let maxValue = minValue.reverse();
-    console.log(partialTotals(maxValue, n/4));
+    //let minValue = sortValue(taskList);
+    //let maxValue = minValue.reverse();
+    //console.log(partialTotals(maxValue, n/4));
 
     let minImpact = sortImpact(taskList);
     let maxImpact = minImpact.reverse();
