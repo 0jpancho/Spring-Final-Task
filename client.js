@@ -50,14 +50,16 @@ function sortTime(list){
 
     //provide the criteria to sort the tasks.  They are objects remember.
     return list.sort(function(a, b){
-        a.time - b.time;
+        return a.time - b.time;
     });
-
 }
 
 //returns a sorted version of the task list from least to greatest according to its value variable
 function sortValue(list){
 
+  return list.sort(function(a, b){
+      return a.value - b.value;
+  });
 
 }
 
@@ -66,11 +68,13 @@ function sortImpact(list){
 
     //create a function which returns the impact of a given task
     function impact(task){
-
+      return task.value * (1 / task.time);
     }
 
     //finishes the sort
-    return list.sort(/*fill this*/);
+    return list.sort(function(a, b){
+      return impact(a) - impact(b);
+    });
 
 }
 
@@ -87,13 +91,23 @@ function mainTest(n){
     let minTime = sortTime(taskList);
     console.log(partialTotals(minTime, n/4));
 
-    //let minValue = sortValue(taskList);
-    //let maxValue = minValue.reverse();
-    //console.log(partialTotals(maxValue, n/4));
+    let minValue = sortValue(taskList);
+    let maxValue = minValue.reverse();
+    console.log(partialTotals(maxValue, n/4));
 
     let minImpact = sortImpact(taskList);
     let maxImpact = minImpact.reverse();
     console.log(partialTotals(maxImpact, n/4));
-}
 
-mainTest(60);
+    console.log("------------------");
+    console.log(taskList);
+    console.log("----------partial--------");
+    console.log(partialTotals(taskList, 5));
+    console.log("---------minTime---------");
+    console.log(minTime);
+    console.log("---------maxValue---------");
+    console.log(maxValue);
+    console.log("---------maxImpact---------");
+    console.log(maxImpact);
+}
+mainTest(10);
