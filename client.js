@@ -20,9 +20,9 @@ function totals(list){
     }
 
     return {
-        totalTime,
-        totalValue
-    }
+        totalTime:totalTime,
+        totalValue:totalValue
+ };
 }
 
 //works the the same as above, but stops short at the kth number in the list
@@ -39,9 +39,9 @@ function partialTotals(list,k){
         }
 
         return{
-            totalTime,
-            totalValue
-        }
+             totalTime:totalTime,
+             totalValue:totalValue
+      };
     }
 }
 
@@ -50,7 +50,7 @@ function sortTime(list){
 
     //provide the criteria to sort the tasks.  They are objects remember.
     return list.sort(function(a, b){
-        return a.time - b.time;
+         return a.time - b.time;
     });
 }
 
@@ -58,7 +58,7 @@ function sortTime(list){
 function sortValue(list){
 
   return list.sort(function(a, b){
-      return a.value - b.value;
+       return a.value - b.value;
   });
 
 }
@@ -73,11 +73,9 @@ function sortImpact(list){
 
     //finishes the sort
     return list.sort(function(a, b){
-      return impact(a) - impact(b);
+       impact(a) - impact(b);
     });
-
 }
-
 
 //this is the test code to see if your functions work
 function mainTest(n){
@@ -99,7 +97,7 @@ function mainTest(n){
     let maxImpact = minImpact.reverse();
     console.log(partialTotals(maxImpact, n/4));
 
-    console.log("------------------");
+    //console.log("------------------");
     console.log(taskList);
     console.log("----------partial--------");
     console.log(partialTotals(taskList, 5));

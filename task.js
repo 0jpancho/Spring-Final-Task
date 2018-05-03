@@ -25,7 +25,7 @@ const TaskExport = function(){
 
         for (let a = 0; a < n; a++)
         {
-            list.push(new createTask(rInt(15), rInt(100)));
+            list[a] = new createTask(rInt(15), rInt(100));
         }
         return list;
     }
