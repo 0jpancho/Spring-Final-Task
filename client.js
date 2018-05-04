@@ -20,8 +20,8 @@ function totals(list){
     }
 
     return {
-        totalTime:totalTime,
-        totalValue:totalValue
+        totalValue:totalValue,
+        totalTime:totalTime
  };
 }
 
@@ -39,8 +39,8 @@ function partialTotals(list,k){
         }
 
         return{
-             totalTime:totalTime,
-             totalValue:totalValue
+             totalValue:totalValue,
+             totalTime:totalTime
       };
     }
 }
@@ -68,12 +68,12 @@ function sortImpact(list){
 
     //create a function which returns the impact of a given task
     function impact(task){
-      return task.value * (1 / task.time);
+      return (task.value/task.time);
     }
 
     //finishes the sort
     return list.sort(function(a, b){
-       impact(a) - impact(b);
+       return impact(a) - impact(b);
     });
 }
 
@@ -104,8 +104,8 @@ function mainTest(n){
     console.log("---------minTime---------");
     console.log(minTime);
     console.log("---------maxValue---------");
-    console.log(maxValue);
+    console.log(minValue);
     console.log("---------maxImpact---------");
-    console.log(maxImpact);
+    console.log(minImpact);
 }
 mainTest(10);
