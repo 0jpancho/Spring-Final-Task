@@ -39,8 +39,8 @@ function partialTotals(list,k){
         }
 
         return{
-             totalValue:totalValue,
-             totalTime:totalTime
+             partialValue:totalValue,
+             partialTime:totalTime
       };
     }
 }
@@ -86,14 +86,14 @@ function mainTest(n){
 
     //tests to make sure the sorts are effective
     //both should outperform the original
-    let minTime = sortTime(taskList);
+    let minTime = new sortTime(taskList);
     console.log(partialTotals(minTime, n/4));
 
-    let minValue = sortValue(taskList);
+    let minValue = new sortValue(taskList);
     let maxValue = minValue.reverse();
     console.log(partialTotals(maxValue, n/4));
 
-    let minImpact = sortImpact(taskList);
+    let minImpact = new sortImpact(taskList);
     let maxImpact = minImpact.reverse();
     console.log(partialTotals(maxImpact, n/4));
 
@@ -104,7 +104,7 @@ function mainTest(n){
     console.log("---------minTime---------");
     console.log(minTime);
     console.log("---------maxValue---------");
-    console.log(minValue);
+    console.log(maxValue);
     console.log("---------maxImpact---------");
     console.log(minImpact);
 }
